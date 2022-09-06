@@ -1,0 +1,5 @@
+docker build -t mi-apache .
+docker run -d -p 8080:8080 --name=mi-apache mi-apache
+docker run -d -p 8081:8080 --name=mi-apache-v1 --mount type=volume,source=vol-apache,target=/app mi-apache
+docker run -d -p 8082:8080 --name=mi-apache-v2 --mount type=volume,source=vol-apache,target=/app mi-apache
+docker cp .\volume.html mi-apache-v1:/app/index.html
